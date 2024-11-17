@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let scrollPosition = 0; // Current position of the scroll
     const scrollSpeed = 20; // Speed of scrolling
-    const animationSpeed = 3; // Speed of auto animation
+    const animationSpeed = 2; // Speed of auto animation
     let isScrolling = false; // Flag to detect mouse wheel control
 
     // Auto animation function
