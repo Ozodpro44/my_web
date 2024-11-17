@@ -163,7 +163,6 @@
 
   .email {
     display: flex;
-    text-align: center;
     gap: 10px;
   }
 
@@ -361,6 +360,33 @@
 
     li {
       font-size: 14px;
+    }
+
+
+
+    .social-media a:hover {
+      background-color: #4f4d44;
+      color: #fff;
+    }
+
+
+    .social-media i {
+      font-size: 18px;
+      padding: 3px 3px;
+    }
+
+    .email i {
+      font-size: 12px;
+    }
+
+    .email a {
+      margin: 4px 0px;
+      font-size: 12px;
+    }
+
+
+    .phone-numbers i {
+      font-size: 13px;
     }
 
     h2 {
