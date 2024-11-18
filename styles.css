@@ -1,4 +1,3 @@
-/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -18,11 +17,10 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
-    min-width: 300px;
+    min-width: 370px;
     overflow-x: auto;
   }
   
-  /* Header Styles */
   header {
     padding: 20px;
     text-align: center;
@@ -42,7 +40,6 @@
     animation: bounce 1s infinite;
   }
   
-  /* Content Section Styles */
   .content {
     width: 1200px;
     margin: 0 auto;
@@ -84,14 +81,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     transition: all 0.3s ease;
-    opacity: 0; /* Initially hidden */
+    opacity: 0; 
     transform: translateY(50px);
   }
 
   section.visible {
-    opacity: 1; /* Show when in view */
-    transform: translateY(0); /* Animate to normal position */
-    transition: opacity 1s, transform 1s; /* Smooth transition */
+    opacity: 1; 
+    transform: translateY(0); 
+    transition: opacity 1s, transform 1s; 
   }
   
   h2 {
@@ -125,7 +122,6 @@
     margin: 5px ;
   }
   
-  /* Phone and social links styling */
   .phone-numbers a {
     display: block;
     margin: 5px 0;
@@ -193,66 +189,50 @@
   }
 
   .technologys .list1 {
+    padding-left: 20px;
     gap: 20px;
     display: flex;
-    transform: translateX(0); /* Start position for JS control */
+    transform: translateX(0); 
     will-change: transform;
+    -webkit-overflow-scrolling: touch;
     /* animation: scroll-horizontal 15s linear infinite;  */
   }
 
   @keyframes scroll-horizontal {
     0% {
-      transform: translateX(100%); /* Start off-screen */
+      transform: translateX(100%); 
     }
     100% {
-      transform: translateX(-100%); /* End off-screen */
+      transform: translateX(-100%); 
     }
   }
 
   .technologys .list2 {
+    padding-left: 20px;
     gap: 20px;
     display: flex;
-    transform: translateX(0); /* Start position for JS control */
+    transform: translateX(0); 
+
     will-change: transform;
+    -webkit-overflow-scrolling: touch;
     /* animation: scroll-horizontal 15s linear infinite;  */
   }
 
   @keyframes scroll-horizontal {
     0% {
-      transform: translateX(0%); /* Start off-screen */
+      transform: translateX(0%); 
     }
     100% {
-      transform: translateX(-100%); /* End off-screen */
+      transform: translateX(-100%); 
     }
-  }
-
-  span {
-    position: absolute;
-    bottom: 100%; /* Place tooltip above the text */
-    left: 50%; /* Center align the tooltip */
-    transform: translateX(-50%);
-    background-color: #333; /* Dark background for the tooltip */
-    color: #fff; /* White text for contrast */
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    white-space: nowrap; /* Prevent the tooltip from wrapping */
-    opacity: 0; /* Hidden by default */
-    visibility: hidden; /* Remove it from view */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in/out */
-    pointer-events: none; /* Prevent tooltip from being clickable */
-  }
-  
-  .technologys i:hover span {
-    opacity: 1; /* Show the tooltip */
-    visibility: visible; /* Make it visible */
   }
 
   .icons i {
+    pointer-events: auto;
     font-size: 100px
   }
   
-  /* Footer Styling */
+
   footer {
     text-align: center;
     background-color: #222;
@@ -265,7 +245,6 @@
     font-size: 12px;
   }
   
-  /* Animations */
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -284,7 +263,6 @@
     }
   }
   
-  /* Responsive Styles */
   @media (max-width: 1200px) {
     .content {
       width: 650px;
@@ -362,13 +340,10 @@
       font-size: 14px;
     }
 
-
-
     .social-media a:hover {
       background-color: #4f4d44;
       color: #fff;
     }
-
 
     .social-media i {
       font-size: 18px;
@@ -383,7 +358,6 @@
       margin: 4px 0px;
       font-size: 12px;
     }
-
 
     .phone-numbers i {
       font-size: 13px;
@@ -400,7 +374,6 @@
     p {
       font-size: 15px;
     }
-
 
     .social-media a {
       font-size: 14px;

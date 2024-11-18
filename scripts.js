@@ -1,59 +1,85 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.animated-section');
-  
-    const observerOptions = {
-      root: null,
-      threshold: 0.2, // Trigger when 20% of the section is in view
-    };
-  
-    // Intersection Observer Callback
-    const handleIntersection = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Stop observing once the section is in view
-        }
-      });
-    };
-  
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-  
-    sections.forEach(section => {
-      observer.observe(section); // Start observing each animated section
-    });
-    const technologyContainer = document.querySelector('.technologys');
-    const list1 = document.querySelector('.list1');
-    const list2 = document.querySelector('.list2');
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".animated-section");
 
-    let scrollPosition = 0; // Current position of the scroll
-    const scrollSpeed = 20; // Speed of scrolling
-    const animationSpeed = 2; // Speed of auto animation
-    let isScrolling = false; // Flag to detect mouse wheel control
+  const observerOptions = {
+    root: null,
+    threshold: 0.2,
+  };
 
-    // Auto animation function
-    function autoScroll() {
-      if (!isScrolling) {
-        scrollPosition -= animationSpeed; // Automatically move left
-        if (scrollPosition < -list1.scrollWidth) scrollPosition = 0; // Loop back
-        updateScrollPosition();
+  const handleIntersection = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); 
       }
-      requestAnimationFrame(autoScroll);
+    });
+  };
+
+  const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section); 
+  });
+
+  const iconsContainer = document.querySelector(".icons");
+  const list1 = document.querySelector(".list1");
+  const list2 = document.querySelector(".list2");
+
+  let scrollPosition = 0; 
+  const scrollSpeed = 20; 
+  const animationSpeed = 2;
+  let isScrolling = false;
+
+  let isDragging = false; 
+  let startX = 0;
+
+  function autoScroll() {
+    if (!isScrolling && !isDragging) {
+      scrollPosition -= animationSpeed; 
+      if (scrollPosition < -list1.scrollWidth) scrollPosition = 0;
+      updateScrollPosition();
+    }
+    requestAnimationFrame(autoScroll);
+  }
+
+  function updateScrollPosition() {
+    list1.style.transform = `translateX(${scrollPosition}px)`;
+    list2.style.transform = `translateX(${scrollPosition}px)`;
+  }
+
+  iconsContainer.addEventListener("wheel", (event) => {
+    event.preventDefault(); 
+    isScrolling = true; 
+    scrollPosition += event.deltaY > 0 ? -scrollSpeed : scrollSpeed;
+
+    if (scrollPosition < -list1.scrollWidth) {
+      scrollPosition = 0;
+    } else if (scrollPosition > 0) {
+      scrollPosition = -list1.scrollWidth;
     }
 
-    // Update transform for smooth animation
-    function updateScrollPosition() {
-      list1.style.transform = `translateX(${scrollPosition}px)`;
-      list2.style.transform = `translateX(${scrollPosition}px)`;
-    }
+    updateScrollPosition();
 
-    // Mouse wheel control
-    technologyContainer.addEventListener('wheel', (event) => {
-      event.preventDefault(); // Stop page scrolling
-      isScrolling = true; // Set flag to true
-      scrollPosition += event.deltaY > 0 ? -scrollSpeed : scrollSpeed;
+    clearTimeout(iconsContainer._scrollTimeout);
+    iconsContainer._scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  });
 
-      // Looping behavior
+  iconsContainer.addEventListener("touchstart", (event) => {
+    isDragging = true; 
+    startX = event.touches[0].clientX; 
+    clearTimeout(iconsContainer._scrollTimeout);
+  });
+
+  iconsContainer.addEventListener("touchmove", (event) => {
+    if (isDragging) {
+      const currentX = event.touches[0].clientX;
+      const deltaX = currentX - startX;
+      startX = currentX;
+
+      scrollPosition += deltaX;
+
       if (scrollPosition < -list1.scrollWidth) {
         scrollPosition = 0;
       } else if (scrollPosition > 0) {
@@ -61,16 +87,73 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       updateScrollPosition();
+    }
+  });
 
-      // Stop manual control after 1 second of inactivity
-      clearTimeout(technologyContainer._scrollTimeout);
-        technologyContainer._scrollTimeout = setTimeout(() => {
-        isScrolling = false;
-      }, 1000);
-    });
+  iconsContainer.addEventListener("touchend", () => {
+    isDragging = false; 
+    iconsContainer._scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  });
 
-    // Start auto animation
-    autoScroll();
+  iconsContainer.addEventListener("mousedown", (event) => {
+    isDragging = true; 
+    startX = event.clientX; 
+    event.preventDefault(); 
+  });
 
+  document.addEventListener("mousemove", (event) => {
+    if (isDragging) {
+      const currentX = event.clientX;
+      const deltaX = currentX - startX;
+      startX = currentX; 
+
+      scrollPosition += deltaX;
+
+      if (scrollPosition < -list1.scrollWidth) {
+        scrollPosition = 0;
+      } else if (scrollPosition > 0) {
+        scrollPosition = -list1.scrollWidth;
+      }
+
+      updateScrollPosition();
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false; 
+    iconsContainer._scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  });
+
+  autoScroll();
+
+  const emailElement = document.querySelector('.email');
+  const iconElement = emailElement.querySelector('i');
+  
+  emailElement.addEventListener('mouseenter', () => {
+    iconElement.classList.remove('bxs-envelope');
+    iconElement.classList.add('bxs-envelope-open');
   });
   
+  emailElement.addEventListener('mouseleave', () => {
+    iconElement.classList.remove('bxs-envelope-open');
+    iconElement.classList.add('bxs-envelope');
+  });
+
+  const phoneElement = document.querySelector('.phone-number1, .phone-number2');
+  const phoneIconElement = phoneElement.querySelector('i');
+
+  phoneElement.addEventListener('mouseenter', () => {
+    phoneIconElement.classList.remove('bxs-phone');
+    phoneIconElement.classList.add('bxs-phone-call');
+  });
+
+  phoneElement.addEventListener('mouseleave', () => {
+    phoneIconElement.classList.remove('bxs-phone-call');
+    phoneIconElement.classList.add('bxs-phone');
+  });
+
+});
