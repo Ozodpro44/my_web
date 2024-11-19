@@ -242,6 +242,9 @@
     font-size: 100px
   }
   
+  .icons i:hover {
+    color: #4f4d44;
+  }
 
   footer {
     text-align: center;
