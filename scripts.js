@@ -143,8 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
     iconElement.classList.add('bxs-envelope');
   });
 
-  const phoneElement = document.querySelector('.phone-number1, .phone-number2');
+  const phoneElement = document.querySelector('.phone-number1');
+  const phoneElement2 = document.querySelector('.phone-number2');
   const phoneIconElement = phoneElement.querySelector('i');
+  const phoneIconElement2 = phoneElement2.querySelector('i');
+
 
   phoneElement.addEventListener('mouseenter', () => {
     phoneIconElement.classList.remove('bxs-phone');
@@ -155,5 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
     phoneIconElement.classList.remove('bxs-phone-call');
     phoneIconElement.classList.add('bxs-phone');
   });
+
+  phoneElement2.addEventListener("mouseenter", () => {
+    phoneIconElement2.classList.remove("bxs-phone");
+    phoneIconElement2.classList.add("bxs-phone-call");
+  });
+
+  phoneElement2.addEventListener("mouseleave", () => {
+    phoneIconElement2.classList.remove("bxs-phone-call");
+    phoneIconElement2.classList.add("bxs-phone");
+  })
 
 });

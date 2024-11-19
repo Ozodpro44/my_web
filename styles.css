@@ -24,9 +24,19 @@
   header {
     padding: 20px;
     text-align: center;
-
+    align-items: center;
+    display: flex;
+    gap: 20px;
     border-bottom: #222 dashed 3px;
 
+  }
+  
+  .name-info {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
   .name h1 {
@@ -50,7 +60,7 @@
     flex-direction: column;
     gap: 20px;
   }
-
+  
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0);
@@ -66,7 +76,7 @@
     gap: 20px;
     flex-wrap: wrap;
   }
-
+  
   .content-bottom {
     display: flex;
     justify-content: space-between;
@@ -84,7 +94,7 @@
     opacity: 0; 
     transform: translateY(50px);
   }
-
+  
   section.visible {
     opacity: 1; 
     transform: translateY(0); 
