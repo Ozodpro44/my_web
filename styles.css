@@ -406,11 +406,14 @@
       margin-bottom: 10px;
     }
 
-    .button-container {
+    .phone-resume {
       display: inline;
+      gap: 5px;
+    }
+
+    .button-container {
       padding: 20px;
     }
-  
 
     .resume-button {
       padding: 6px 10px;
