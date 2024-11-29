@@ -154,6 +154,10 @@
     align-items: center;
   }
 
+  .button-container a {
+    text-decoration: none;
+  }
+
 /* Styling the button */
   .resume-button {
     display: flex;
