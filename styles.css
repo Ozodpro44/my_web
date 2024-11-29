@@ -121,6 +121,72 @@
     font-size: 18px;
   }
 
+  .phone-resume {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* .button-container {
+    margin: auto;
+    justify-content: center;
+  }
+
+  .resume-button {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    font-size: 15px;
+    border-radius: 10px;
+    border: #55544f solid;
+  }
+
+  .button-container i {
+    font-size: 20px;
+  } */
+
+  .button-container {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* Styling the button */
+  .resume-button {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between text and icon */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #3a3938;
+    background-color: #eeecea; /* Primary blue color */
+    border: #55544f solid 2.5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+/* Add hover and active effects */
+  .resume-button:hover {
+    color: #eeecea;
+    background-color: #3a3938;
+    border: none; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+  }
+
+  .resume-button:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+  }
+
+/* Style the icon */
+  .resume-button i {
+    font-size: 18px;
+  }
+
   .phone-number1, .phone-number2{
     display: flex;
     text-align: center;
@@ -339,7 +405,20 @@
       padding: 15px;
       margin-bottom: 10px;
     }
+
+    .button-container {
+      display: inline;
+      padding: 20px;
+    }
   
+
+    .resume-button {
+      padding: 6px 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 2px solid #55544f;
+      gap: 3px;
+    }
 
     .name h1 {
       font-size: 1.5rem;

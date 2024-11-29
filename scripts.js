@@ -282,4 +282,22 @@ document.addEventListener("DOMContentLoaded", () => {
     phoneIconElement2.classList.add("bxs-phone");
   })
 
+  // В Express сервере
+  document.getElementById('download').addEventListener('click', function() {
+    // Create an anchor element
+    var link = document.createElement('a');
+    
+    // Set the href to the resume file URL
+    link.href = 'https://zokirovv.netlify.app/resume/Resume.pdf'; // Replace with your resume file URL
+    
+    // Set download attribute to prompt download dialog
+    link.download = 'Resume.pdf';
+    
+    // Append the anchor to the body and click it
+    document.body.appendChild(link);
+    link.click();
+    
+    // Remove the anchor after click
+    document.body.removeChild(link);
+});
 });
