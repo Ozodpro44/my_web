@@ -411,13 +411,9 @@
       gap: 5px;
     }
 
-    .button-container {
-      padding: 20px;
-    }
-
     .resume-button {
       padding: 6px 10px;
-      font-size: 14px;
+      font-size: 12px;
       border-radius: 5px;
       border: 2px solid #55544f;
       gap: 3px;
